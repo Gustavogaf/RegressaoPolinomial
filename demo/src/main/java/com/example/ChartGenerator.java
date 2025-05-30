@@ -110,7 +110,7 @@ public class ChartGenerator extends JFrame {
                 true, // tooltips
                 false // urls
         );
-
+        
         // O gráfico R2 pode continuar como linha para mostrar a evolução
         XYPlot plot = chart.getXYPlot();
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
