@@ -63,7 +63,6 @@ As principais dependências são gerenciadas via Maven e declaradas no `pom.xml`
 
 **Comentários essenciais no código-fonte:**
 
-Vou adicionar comentários às classes principais (`Main.java`, `DataReader.java`, `PolynomialRegressionSolver.java`, `ChartGenerator.java`) para explicar suas responsabilidades e a lógica interna.
 
 **1. `gustavogaf/regressaopolinomial/RegressaoPolinomial-main/demo/src/main/java/com/example/Main.java`**
 
