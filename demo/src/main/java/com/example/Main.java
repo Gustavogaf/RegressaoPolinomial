@@ -9,7 +9,8 @@ import java.util.Map;
 
 public class Main {
 
-    private static final String DATA_FILE = "dados.txt"; // Certifique-se de que este arquivo está na raiz do seu projeto
+    private static final String DATA_FILE = "dados.txt"; // Certifique-se de que este arquivo está na raiz do seu
+                                                         // projeto
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -32,31 +33,47 @@ public class Main {
                         continue;
                     }
 
+                    // em Main.java, dentro do loop for (int degree = 1; degree <= 10; degree++)
                     double[] coefficients = PolynomialRegressionSolver.fitPolynomial(data, degree);
+                    System.out.print("Coeficientes para grau " + degree + ": "); // Adicionei
+                    for (double coeff : coefficients) { // Adicionei
+                        System.out.print(String.format("%.4f", coeff) + " "); // Adicionei
+                    }
+                    System.out.println(); // Adicionei
                     double r2 = PolynomialRegressionSolver.calculateR2(data, coefficients);
                     rSquaredValues.put(degree, r2);
 
-                    List<double[]> predictedPoints = PolynomialRegressionSolver.generatePredictedPoints(data, coefficients);
+                    List<double[]> predictedPoints = PolynomialRegressionSolver.generatePredictedPoints(data,
+                            coefficients);
 
                     ChartGenerator chart1 = new ChartGenerator("Regressão Polinomial - Grau " + degree);
+                    // Adicionar esta linha para garantir que a janela é descartada ao ser fechada
+                    chart1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Adicionado
                     chart1.createRegressionChart(
                             "Regressão Polinomial - Grau " + degree + " (R² = " + String.format("%.4f", r2) + ")",
                             "t",
                             "f(t)",
                             data,
                             predictedPoints,
-                            degree
-                    );
+                            degree);
+                    // Opcional: Adicionar uma pequena pausa para que o usuário possa ver cada
+                    // gráfico
+                    // try {
+                    // Thread.sleep(1000); // Pausa de 1 segundo
+                    // } catch (InterruptedException ex) {
+                    // Thread.currentThread().interrupt();
+                    // }
                 }
 
                 // Gerar o gráfico da evolução do coeficiente de determinação
                 ChartGenerator chart2 = new ChartGenerator("Evolução do Coeficiente de Determinação (R²)");
+                chart2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Adicionado (para fechar a aplicação ao fechar
+                                                                       // este último gráfico)
                 chart2.createR2Chart(
                         "Evolução do Coeficiente de Determinação (R²)",
                         "Grau do Polinômio",
                         "R²",
-                        rSquaredValues
-                );
+                        rSquaredValues);
 
             } catch (IOException e) {
                 System.err.println("Erro ao ler o arquivo de dados: " + e.getMessage());
