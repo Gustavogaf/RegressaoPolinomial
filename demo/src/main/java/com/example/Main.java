@@ -36,21 +36,17 @@ public class Main {
                         continue;
                     }
 
-                    // Ajuste do polinômio para o grau atual usando a classe renomeada e método
-                    // renomeado
+                    // Ajuste do polinômio para o grau atual  
                     PolynomialFunction polinomio = RegressaoPolinomial.ajustarPolinomio(dados, grau);
 
-                    // Cálculo do R² Ajustado para o modelo atual usando a classe renomeada e método
-                    // renomeado
+                    // Cálculo do R² Ajustado para o modelo atual 
                     double r2Ajustado = RegressaoPolinomial.calcularR2Ajustado(dados, polinomio, grau);
                     valoresRSquaredAjustado.put(grau, r2Ajustado);
 
-                    // Geração dos pontos preditos pelo modelo para plotagem da curva usando a
-                    // classe renomeada e método renomeado
+                    // Geração dos pontos preditos pelo modelo para plotagem da curva 
                     List<double[]> pontosPreditos = RegressaoPolinomial.gerarPontosPreditos(dados, polinomio);
 
-                    // Criação e exibição do gráfico de regressão para o grau atual usando a classe
-                    // renomeada e método renomeado
+                    // Criação e exibição do gráfico de regressão para o grau atual 
                     GeradorDeGraficos graficoRegressao = new GeradorDeGraficos("Regressão Polinomial - Grau " + grau);
                     graficoRegressao.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     graficoRegressao.criarGraficoRegressao(
@@ -63,8 +59,7 @@ public class Main {
                             grau);
                 }
 
-                // Geração e exibição do gráfico da evolução do R² Ajustado por grau usando a
-                // classe renomeada e método renomeado
+                // Geração e exibição do gráfico da evolução do R² Ajustado 
                 GeradorDeGraficos graficoR2 = new GeradorDeGraficos(
                         "Evolução do Coeficiente de Determinação (R² Ajustado)");
                 graficoR2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
